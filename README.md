@@ -1,6 +1,7 @@
 # Configuração de ambiente
 
-O **MSYS2** é um ambiente de desenvolvimento que fornece um shell tipo bash, pacotes de software e ferramentas de compilação.\
+O **MSYS2** é um ambiente de desenvolvimento que fornece um shell tipo bash, pacotes de software e ferramentas de compilação.
+
 Faça o download do instalador do MSYS2 em [https://www.msys2.org/](https://www.msys2.org/).\
 Execute o instalador e siga as instruções.
 Durante a instalação, você pode escolher o diretório de instalação, mas o padrão é `C:\msys64`.
@@ -97,3 +98,42 @@ Para navegar pelas opções, você deve digitar o número ou letra correspondent
 A fim de configurar, pressione `1` e `Enter`.
 
 A seguinte sequência de teclas pode ser usada para fazer uma configuração padrão: `10213041u2s00`.
+
+## Windows Terminal
+
+Nós podemos configurar o **Windows Terminal** para abrir no ambiente MSYS2 CLANG64, como mostrado na [documentação oficial](https://www.msys2.org/docs/terminals/).
+
+Para isso, abra o Windows Terminal e acesse as **configurações**.
+Na barra inferior, clique em **Abrir o arquivo JSON**.
+Este arquivo define todas as configurações do Windows Terminal.
+Nós desejamos adicionar um novo perfil para o MSYS2 Clang64.
+
+Encontre a chave `"profiles"`.
+Ela contém duas chaves:
+
+- `"defaults"`: define as configurações padrão para todos os perfis.
+- `"list"`: contém a lista de perfis, definida pelos colchetes `[]`.
+  Cada perfil dentro deles é um objeto JSON que contém várias configurações, como nome, ícone, fonte, esquema de cores, etc.
+
+Abaixo definimos um novo perfil, chamado `CLANG64 / MSYS2`, que abre o MSYS2 Clang64 no diretório do usuário.
+Copie **APENAS** o objeto JSON abaixo e cole dentro do array `"list"`.
+
+```json
+{
+  "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
+  "name": "CLANG64 / MSYS2",
+  "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -clang64 -shell zsh",
+  "icon": "C:\\msys64\\clang64.ico",
+  "startingDirectory": "C:/msys64/home/%USERNAME%"
+}
+```
+
+Salve o arquivo e feche o Windows Terminal.
+
+Agora, abra o Windows Terminal novamente e você verá um novo perfil chamado `CLANG64 / MSYS2`.
+Clique nele e você abrirá o MSYS2 Clang64 no diretório do usuário.
+
+Você pode definir este perfil como padrão,.
+Acesse as **Configurações** do Windows Terminal, clique em **Inicialização** e, no campo **Perfis padrão**, selecione o perfil `CLANG64 / MSYS2`.
+
+Sinta-se à vontade para personalizar o perfil como desejar.
