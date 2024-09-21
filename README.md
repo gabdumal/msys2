@@ -10,3 +10,17 @@ O que vamos usar é o MSYS2 **Clang64**, que é um ambiente de desenvolvimento b
 
 **Clang** é um compilador C, C++, Objective-C e Objective-C++ de código aberto, que é parte do projeto LLVM. Outro compilador muito conhecido é o _GCC_.
 Já **LLVM** é uma infraestrutura de compilador que é usada para construir compiladores para várias linguagens de programação.
+
+## Configurações iniciais
+
+Após a instalação, abra o programa **MSYS2 CLANG64**, disponível no menu Iniciar.
+
+Ele abre o emulador de **terminal** padrão do MSYS2, que é o **Mintty**, que é baseado no terminal _xterm_.
+Um emulador de terminal é um programa que permite que você interaja com o computador por meio de comandos de texto.
+
+Essa interação é feita por meio de um **shell**, que é um programa que interpreta comandos e executa programas.
+O shell padrão do MSYS2 é o **bash**, que é muito popular no Linux.
+
+Dentro do Mintty, nós podemos executar comandos específicos do MSYS2.
+Ele é um ambiente **Unix-like**, então muitos comandos são similares aos do Linux.
+Por exemplo, para listar os arquivos de um diretório, usamos o comando `ls`.
