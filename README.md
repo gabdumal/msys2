@@ -24,3 +24,32 @@ O shell padrão do MSYS2 é o **bash**, que é muito popular no Linux.
 Dentro do Mintty, nós podemos executar comandos específicos do MSYS2.
 Ele é um ambiente **Unix-like**, então muitos comandos são similares aos do Linux.
 Por exemplo, para listar os arquivos de um diretório, usamos o comando `ls`.
+
+## Atualização dos pacotes
+
+O MSYS2 disponibiliza um gerenciador de pacotes chamado **pacman**.
+Ele é usado para instalar, atualizar e remover pacotes de software.
+
+Primeiramente, vamos atualizar o banco de dados de **pacotes** do MSYS2.
+Execute o comando abaixo no terminal Mintty:
+
+```bash
+pacman -Syu
+```
+
+O shell perguntará se você deseja proceder com o processo.
+Digite `Y` e pressione `Enter`.
+
+Ao concluir, ele o pedirá para reiniciar o MSYS2.
+Novamente, digite `Y` e pressione `Enter`.
+
+Abra o MSYS2 CLANG64 novamente.
+Agora vamos de fato **baixar** os pacotes atualizados.
+Antes, havíamos apenas buscado as informações sobre os pacotes disponíveis.
+Digite o comando abaixo:
+
+```bash
+pacman -Su
+```
+
+Confirme a instalação dos pacotes digitando `Y` e pressionando `Enter`.
