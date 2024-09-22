@@ -109,11 +109,63 @@ Você pode usá-lo para se referir a este diretório em qualquer lugar do subsis
 Se você listar o conteúdo do diretório novamente, verá que o diretório `dev` foi criado.
 O comando `ls` lista o conteúdo de um diretório, e o argumento `--all` (executado como `ls --all`) faz com que ele liste todos os arquivos, incluindo os ocultos.
 
+### Link simbólico
+
+Acessar essa pasta pelo Windows Explorer pode ser um pouco trabalhoso, além de arriscar perder os arquivos caso você venha a desinstalar o MSYS2.
+
+Em vez de criar uma nova pasta dentro do MSYS2, você pode, na verdade, criar uma pasta comum no Windows, e definir um "atalho" para ela dentro do MSYS2.
+
+Em sistemas Unix-like, esse "atalho" é chamado de **link simbólico**.
+
+Primeiramente, vamos apagar a pasta `dev` que criamos dentro do MSYS2.
+Execute o comando abaixo no terminal Mintty.
+Ele indica que se deve apagar um diretório e todo o seu conteúdo.
+
+```bash
+rm -rf ~/dev
+```
+
+Agora, vamos criar uma pasta `dev` no Windows.
+Eu escolhi criá-la no diretório `C:\Users\[username]`.
+Veja, este diretório `C:\Users\` tem uma função similar ao `/home` do MSYS2, pois é onde ficam os arquivos de cada usuário do Windows.
+Apesar disso, são duas pastas completamente diferentes, não as confunda.
+
+Vamos lá, crie normalmente, utilizando o Windows Explorer, uma pasta chamada `dev` no diretório `C:\Users\[username]`, ou seja, `C:\Users\[username]\dev`.
+
+Crie dentro dela um arquivo de texto qualquer, para testarmos o link simbólico.
+Chamei o meu de `ola_mundo.txt`.
+
+![Conteúdo do arquivo ola_mundo.txt.](img/ola_mundo.png)
+
+Agora, vamos criar o link simbólico.
+O comando para isso é `ln -s [caminho do arquivo ou pasta original] [caminho do link simbólico]`.
+Então, primeiro vem a pasta do Windows, e depois o lugar dentro do subsistema MSYS2 onde você quer que o link seja criado.
+
+Mas tem um detalhe: o MSYS2 não entende o caminho `C:\Users\[username]`.
+A forma de escrever o caminho de arquivos e pastas é diferente em sistemas Windows e Unix-like.
+
+No Windows, usamos barras invertidas (`\`) para separar os diretórios, como em `C:\Users\[username]\dev`.
+
+Já em sistemas Unix-like, usamos barras normais (`/`) para separar os diretórios.
+Além disso, em vez de nomear os discos como `C:`, `D:`, etc., começamos o caminho pelo diretório raiz `/` seguido pela letra do disco em minúsculo.
+Por exemplo, `/c/Users/[username]/dev`.
+
+Sabendo disso, no terminal Mintty, execute o comando abaixo:
+
+```bash
+ln -s /c/Users/$USER/dev ~/dev
+```
+
+A variável `$USER` é um atalho para o nome do usuário do MSYS2.
+Ela é equivalente ao `[username]` que usamos anteriormente.
+
+Se você listar o conteúdo do diretório `~/dev`, verá que o arquivo `ola_mundo.txt` está lá.
+
 ## Instalação de pacotes
 
 Vamos trocar o shell do MSYS2 para o **zsh**, que é um shell mais moderno e poderoso que o bash.
 
-Para isso, execute o comando abaixo no terminal do MSYS2:
+Para isso, execute o comando abaixo no terminal do MSYS2, para instalar o pacote `zsh`:
 
 ```bash
 pacman -S zsh
@@ -146,7 +198,7 @@ Você verá uma mensagem de boas-vindas do zsh.
 Ele te guiará por um processo de configuração inicial.
 Sinta-se à vontade para configurar como desejar.
 
-![alt text](zsh-welcome.png)
+![Mensagem de boas vindas do Zsh.](img/zsh-welcome.png)
 
 Para navegar pelas opções, você deve digitar o número ou letra correspondente à opção desejada e pressionar `Enter`.
 A fim de configurar, pressione `1` e `Enter`.
@@ -241,7 +293,7 @@ export PATH=$PATH:"/c/Program Files/Git/cmd":"/c/Program Files/Git/bin"
 ```
 
 Note que o caminho está escrito com barras normais (`/`), e não invertidas (`\`).
-A forma de escrever o caminho de arquivos é diferente em sistemas Windows e Unix-like.
+Isso é porque devemos utilizar a notação de caminho Unix-like no MSYS2.
 
 Salve o arquivo e feche o editor.
 **Feche** o terminal atual e abra um novo.
@@ -266,3 +318,21 @@ Execute-o no terminal do MSYS2.
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
+
+O Oh My Zsh instalará vários plugins e temas por padrão.
+Após a instalação, você verá uma mensagem de boas-vindas do Oh My Zsh.
+
+Infelizmente, ele substituirá o arquivo `.zshrc` dentro da pasta `/home/[username]`, que nós editamos anteriormente.
+Mas não se preocupe, o conteúdo do arquivo original será salvo em um arquivo chamado `.zshrc.pre-oh-my-zsh`.
+
+Edite o arquivo `.zshrc` com um editor de texto qualquer.
+Copie a seguinte linha e a coloque no **INÍCIO** do arquivo:
+
+```bash
+export PATH=$PATH:"/c/Program Files/Git/cmd":"/c/Program Files/Git/bin"
+```
+
+O Oh My Zsh depende do Git para funcionar corretamente, então é importante que você o defina no Path logo na **primeira** linha do arquivo.
+Caso contrário, você poderá ter problemas ao abrir o terminal.
+
+Como sempre, para atualizar as definições, feche o terminal atual e abra um novo.
