@@ -32,7 +32,7 @@ O que vamos usar é o MSYS2 **Clang64**, que é um ambiente de desenvolvimento b
 **Clang** é um compilador C, C++, Objective-C e Objective-C++ de código aberto, que é parte do projeto LLVM. Outro compilador muito conhecido é o _GCC_.
 Já **LLVM** é uma infraestrutura de compilador que é usada para construir compiladores para várias linguagens de programação.
 
-## Configurações iniciais
+## Mintty
 
 Após a instalação, abra o programa **MSYS2 CLANG64**, disponível no menu Iniciar.
 
@@ -113,9 +113,7 @@ O comando `ls` lista o conteúdo de um diretório, e o argumento `--all` (execut
 
 Acessar essa pasta pelo Windows Explorer pode ser um pouco trabalhoso, além de arriscar perder os arquivos caso você venha a desinstalar o MSYS2.
 
-Em vez de criar uma nova pasta dentro do MSYS2, você pode, na verdade, criar uma pasta comum no Windows, e definir um "atalho" para ela dentro do MSYS2.
-
-Em sistemas Unix-like, esse "atalho" é chamado de **link simbólico**.
+Em vez de criar uma nova pasta dentro do MSYS2, você pode, na verdade, criar uma pasta comum no Windows, e definir um "atalho" para ela dentro do MSYS2, o que é chamado de **link simbólico**.
 
 Primeiramente, vamos apagar a pasta `dev` que criamos dentro do MSYS2.
 Execute o comando abaixo no terminal Mintty.
@@ -138,30 +136,26 @@ Chamei o meu de `ola_mundo.txt`.
 ![Conteúdo do arquivo ola_mundo.txt.](img/ola_mundo.png)
 
 Agora, vamos criar o link simbólico.
-O comando para isso é `ln -s [caminho do arquivo ou pasta original] [caminho do link simbólico]`.
-Então, primeiro vem a pasta do Windows, e depois o lugar dentro do subsistema MSYS2 onde você quer que o link seja criado.
+Para isso, abra o Prompt de comando do Windows, ou seja, o `cmd`.
+Não funciona no terminal do MSYS2 nem no PowerShell.
 
-Mas tem um detalhe: o MSYS2 não entende o caminho `C:\Users\[username]`.
-A forma de escrever o caminho de arquivos e pastas é diferente em sistemas Windows e Unix-like.
+O comando para criar links simbólicos no Windows é `mklink`.
+Ele apresenta diferentes tipos de links.
+Vamos utilizar um chamado **junction**, que é um link simbólico de diretório, em que mudanças feitas em um diretório são refletidas no outro, e vice-versa.
 
-No Windows, usamos barras invertidas (`\`) para separar os diretórios, como em `C:\Users\[username]\dev`.
-
-Já em sistemas Unix-like, usamos barras normais (`/`) para separar os diretórios.
-Além disso, em vez de nomear os discos como `C:`, `D:`, etc., começamos o caminho pelo diretório raiz `/` seguido pela letra do disco em minúsculo.
-Por exemplo, `/c/Users/[username]/dev`.
-
-Sabendo disso, no terminal Mintty, execute o comando abaixo:
+No **Prompt de comando do Windows**, execute o comando abaixo, substituindo `[username]` pelo nome da sua pasta de usuário do Windows.
 
 ```bash
-ln -s /c/Users/$USER/dev ~/dev
+mklink /J C:\msys64\home\[username]\dev C:\Users\[username]\dev
 ```
 
-A variável `$USER` é um atalho para o nome do usuário do MSYS2.
-Ela é equivalente ao `[username]` que usamos anteriormente.
+Agora, se você listar o conteúdo do diretório `~/dev` no Mintty, verá que o arquivo `ola_mundo.txt` está lá.
+Isso significa que o link simbólico foi criado com sucesso.
 
-Se você listar o conteúdo do diretório `~/dev`, verá que o arquivo `ola_mundo.txt` está lá.
+Você pode fixar a pasta `dev` no Windows Explorer, para que ela fique sempre visível.
+Todas as alterações feitas dentro dela serão refletidas no MSYS2, e vice-versa.
 
-## Instalação de pacotes
+## Instalação do shell ZSH
 
 Vamos trocar o shell do MSYS2 para o **zsh**, que é um shell mais moderno e poderoso que o bash.
 
@@ -205,7 +199,7 @@ A fim de configurar, pressione `1` e `Enter`.
 
 A seguinte sequência de teclas pode ser usada para fazer uma configuração padrão: `10213041u2s00`.
 
-## Windows Terminal
+## Configuração do Windows Terminal
 
 Nós podemos configurar o **Windows Terminal** para abrir no ambiente MSYS2 CLANG64, como mostrado na [documentação oficial](https://www.msys2.org/docs/terminals/).
 
@@ -244,7 +238,7 @@ Acesse as **Configurações** do Windows Terminal, clique em **Inicialização**
 
 Sinta-se à vontade para personalizar o perfil como desejar.
 
-## Git
+## Instalação do Git
 
 O **Git** é um sistema de controle de versão distribuído.
 Ele é muito utilizado para controle de versão de código fonte e colaboração em projetos de software.
@@ -292,8 +286,10 @@ Adicione a linha abaixo ao **final** do arquivo:
 export PATH=$PATH:"/c/Program Files/Git/cmd":"/c/Program Files/Git/bin"
 ```
 
-Note que o caminho está escrito com barras normais (`/`), e não invertidas (`\`).
-Isso é porque devemos utilizar a notação de caminho Unix-like no MSYS2.
+Aqui tem um detalhe: o MSYS2, assim como sistemas Unix-like, usa barras normais (`/`) para separar os diretórios.
+No Windows, usamos barras invertidas (`\`), como em `C:\Program Files\Git\cmd`.
+
+Além disso, em vez de nomear os discos como `C:`, `D:`, etc., começamos o caminho pelo diretório raiz `/` seguido pela letra do disco em minúsculo.
 
 Salve o arquivo e feche o editor.
 **Feche** o terminal atual e abra um novo.
@@ -303,7 +299,7 @@ Se tudo estiver correto, você verá a versão do Git instalada.
 O que nós fizemos foi dizer para o shell zsh que ele deve procurar os executáveis do Git nos diretórios `C:\Program Files\Git\cmd` e `C:\Program Files\Git\bin`.
 Você pode precisar fazer isso para outros programas que você instalar no MSYS2 no futuro.
 
-## Oh My Zsh
+## Instalação do Oh My Zsh
 
 Eu disse que o zsh é um shell mais moderno e poderoso que o bash.
 Mas ainda não expliquei por quê.
@@ -336,3 +332,5 @@ O Oh My Zsh depende do Git para funcionar corretamente, então é importante que
 Caso contrário, você poderá ter problemas ao abrir o terminal.
 
 Como sempre, para atualizar as definições, feche o terminal atual e abra um novo.
+
+

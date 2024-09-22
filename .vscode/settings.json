@@ -1,3 +1,10 @@
 {
-  "cSpell.words": ["commandline", "defterm", "Mintty", "MSYS", "pacman"]
+  "cSpell.words": [
+    "commandline",
+    "defterm",
+    "Mintty",
+    "mklink",
+    "MSYS",
+    "pacman"
+]
 }
