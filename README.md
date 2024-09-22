@@ -1,6 +1,24 @@
 # Configuração de ambiente
 
+Este guia pretende auxiliar a configurar uma máquina Windows para desenvolvimento de software em C e C++.
+
+## Editor de texto
+
+A fim de escrever código, você precisará de um editor de texto apropriado.
+É interessante que ele seja voltado para o desenvolvimento de software, com funcionalidades como _syntax highlighting_, _code completion_, _debugging_, etc.
+
+O **Visual Studio Code** é um editor de texto muito popular entre desenvolvedores.
+Ele é leve, rápido e possui uma grande quantidade de extensões que facilitam o desenvolvimento de software.
+Você pode fazer seu download em [https://code.visualstudio.com/](https://code.visualstudio.com/).
+Execute o instalador e siga as instruções.
+
+## Compilador
+
 O **MSYS2** é um ambiente de desenvolvimento que fornece um shell tipo bash, pacotes de software e ferramentas de compilação.
+
+Ele habilita um ambiente Unix-like no Windows.
+O Linux é um exemplo de sistema operacional Unix-like, que é muito utilizado para desenvolvimento de software.
+Mas perceba que o MSYS2 não é um emulador de Linux, ele apenas oferece um ambiente de desenvolvimento similar ao Linux, que facilita a instalação de ferramentas.
 
 Faça o download do instalador do MSYS2 em [https://www.msys2.org/](https://www.msys2.org/).\
 Execute o instalador e siga as instruções.
@@ -54,6 +72,40 @@ pacman -Su
 ```
 
 Confirme a instalação dos pacotes digitando `Y` e pressionando `Enter`.
+
+## Estrutura de diretórios
+
+O MSYS2 cria uma pasta no seu disco `C:` chamada `msys64`.
+Ela simula um ambiente Unix-like, com diretórios como `/bin`, `/home`, `/usr`, etc.
+
+Além disso, é neste diretório que você encontrará os executáveis de cada ambiente disponibilizado pelo MSYS2.
+Lembre-se: estamos utilizando o CLANG64, mas há outros ambientes disponíveis, caso você precise.
+
+O diretório `/home` cria uma pasta para cada usuário do subsistema MSYS2.
+Inicialmente, você verá apenas uma pasta dentro dela, que é o seu usuário do Windows.
+Vamos nos referir a ele como `[username]`.
+Então, o caminho completo para a pasta do seu usuário é `C:\msys64\home\[username]`.
+
+Dentro dessa pasta, ficarão todos os arquivos de configuração do shell e de outros programas que você virá a instalar no MSYS2.
+
+Além disso, todos os arquivos que você queira usar dentro do MSYS2, incluindo projetos que você queira desenvolver, devem ser colocados dentro de `/home/[username]`.
+
+Todas vez que você inicia o MSYS2 CLANG64, ele abre o terminal Mintty no diretório `/home/[username]`.
+Por enquanto, há apenas os arquivos de configuração do shell.
+Você pode listá-los com o comando `ls --all`.
+
+Para ajudar na organização, vamos criar um diretório chamado `dev` dentro de `/home/[username]`.
+Dentro dele, você pode colocar todos os seus projetos de desenvolvimento.
+
+```bash
+mkdir ~/dev
+```
+
+Esse `~` é um atalho de linha de comando, que representa o caminho até seu diretório `/home/[username]`.
+Você pode usá-lo para se referir a este diretório em qualquer lugar do subsistema MSYS2.
+
+Se você listar o conteúdo do diretório novamente, verá que o diretório `dev` foi criado.
+O comando `ls` lista o conteúdo de um diretório, e o argumento `--all` (executado como `ls --all`) faz com que ele liste todos os arquivos, incluindo os ocultos.
 
 ## Instalação de pacotes
 
@@ -174,7 +226,7 @@ Se tudo estiver correto, você verá a versão do Git instalada, como `git versi
 
 A Path do Git for Windows não é reconhecida por padrão pelo terminal do MSYS2.
 Para resolver isso, nós teremos que editar o arquivo de configuração do zsh.
-Ele é um arquivo chamado `.zshrc` e fica no diretório do usuário, que é `C:\msys64\home\[username]`.
+Ele é um arquivo chamado `.zshrc` e fica no diretório do usuário dentro do subsistema MSYS2. Seu caminho é `C:\msys64\home\[username]`.
 
 Essa pasta guardará vários arquivos de configuração de programas que você utilizará no MSYS2.
 Caso você encontre algum problema, é possível que a solução esteja em um desses arquivos.
@@ -186,6 +238,9 @@ Adicione a linha abaixo ao **final** do arquivo:
 export PATH=$PATH:"/c/Program Files/Git/cmd":"/c/Program Files/Git/bin"
 ```
 
+Note que o caminho está escrito com barras normais (`/`), e não invertidas (`\`).
+A forma de escrever o caminho de arquivos é diferente em sistemas Windows e Unix-like.
+
 Salve o arquivo e feche o editor.
 **Feche** o terminal atual e abra um novo.
 Agora faça o teste do Git novamente.
@@ -193,3 +248,27 @@ Se tudo estiver correto, você verá a versão do Git instalada.
 
 O que nós fizemos foi dizer para o shell zsh que ele deve procurar os executáveis do Git nos diretórios `C:\Program Files\Git\cmd` e `C:\Program Files\Git\bin`.
 Você pode precisar fazer isso para outros programas que você instalar no MSYS2 no futuro.
+
+## Oh My Zsh
+
+Eu disse que o zsh é um shell mais moderno e poderoso que o bash.
+Mas ainda não expliquei por quê.
+A resposta é que ele é altamente _customizável_ e _extensível_, graças a uma grande quantidade de _plugins_ e _temas_ disponíveis.
+
+O **Oh My Zsh** é um framework para gerenciar a configuração do zsh.
+Suas instruções de instalação estão disponíveis no seu [repositório no GitHub](https://github.com/ohmyzsh/ohmyzsh).
+
+Neste link, você encontrará o comando de instalação.
+Execute-o no terminal do MSYS2.
+
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+## Depois
+
+Ensinar link simbólico
+
+```bash
+ln -s /c/Users/[username]/dev ~/dev
+```
