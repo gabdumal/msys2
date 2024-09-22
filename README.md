@@ -1,4 +1,6 @@
-# Configuração de ambiente
+# Configuração de ambiente Windows para desenvolvimento em C e C++ utilizando MSYS2
+
+> [Gabriel Malosto](https://github.com/gabdumal), 2024
 
 Este guia pretende auxiliar a configurar uma máquina Windows para desenvolvimento de software em C e C++.
 
@@ -263,12 +265,4 @@ Execute-o no terminal do MSYS2.
 
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-
-## Depois
-
-Ensinar link simbólico
-
-```bash
-ln -s /c/Users/[username]/dev ~/dev
 ```
