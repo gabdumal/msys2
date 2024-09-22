@@ -14,7 +14,7 @@ Ele é leve, rápido e possui uma grande quantidade de extensões que facilitam 
 Você pode fazer seu download em [https://code.visualstudio.com/](https://code.visualstudio.com/).
 Execute o instalador e siga as instruções.
 
-## Compilador
+## Ambientes do MSYS2
 
 O **MSYS2** é um ambiente de desenvolvimento que fornece um shell tipo bash, pacotes de software e ferramentas de compilação.
 
@@ -31,6 +31,15 @@ O que vamos usar é o MSYS2 **Clang64**, que é um ambiente de desenvolvimento b
 
 **Clang** é um compilador C, C++, Objective-C e Objective-C++ de código aberto, que é parte do projeto LLVM. Outro compilador muito conhecido é o _GCC_.
 Já **LLVM** é uma infraestrutura de compilador que é usada para construir compiladores para várias linguagens de programação.
+
+No MSYS2, cada ambiente tem suas próprias ferramentas de compilação e bibliotecas.
+Ao instalar um pacote voltado para compilação, devemos selecionar sempre aquele que é prefixado com o nome do ambiente que estamos utilizando.
+
+Isto se dá pois o MSYS2 apenas instalará os programas na pasta correspondente ao ambiente selecionado.
+Por exemplo, se você instalar o pacote `clang` no ambiente `MSYS2 CLANG64`, ele será instalado em `C:\msys64\clang64`.
+
+Apesar dessa divisão, os pacotes **não vêm** instalados por padrão.
+Vamos aprender a fazer isso mais adiante.
 
 ## Mintty
 
@@ -159,7 +168,7 @@ Todas as alterações feitas dentro dela serão refletidas no MSYS2, e vice-vers
 
 Vamos trocar o shell do MSYS2 para o **zsh**, que é um shell mais moderno e poderoso que o bash.
 
-Para isso, execute o comando abaixo no terminal do MSYS2, para instalar o pacote `zsh`:
+Para isso, execute o comando abaixo no terminal do **MSYS2**, para instalar o pacote `zsh`:
 
 ```bash
 pacman -S zsh
@@ -333,4 +342,56 @@ Caso contrário, você poderá ter problemas ao abrir o terminal.
 
 Como sempre, para atualizar as definições, feche o terminal atual e abra um novo.
 
+## Compilando um programa em C
 
+Ufa, finalmente terminamos as configurações iniciais!
+Agora vamos compilar um programa em C para testar se tudo está funcionando corretamente.
+
+Crie um diretório chamado `my_c_code` dentro de `~/dev`.
+Dentro dele, crie um arquivo chamado `my_c_code.c`.
+
+![Comandos executados no Windows Terminal no perfil MSYS2 CLANG64 para criar um arquivo chamado my_c_code.c.](img/creating_my_c_code.png)
+
+Abra o arquivo com um editor de texto qualquer e adicione o código abaixo:
+
+```c
+#include <stdio.h>
+
+int main() {
+    printf("Hello, world!\nThis is my first code in MSYS2.\n");
+    return 0;
+}
+```
+
+Salve o arquivo e volte ao terminal do MSYS2.
+
+### Instalando o compilador
+
+Para compilar o programa, vamos usar o **Clang**.
+Lembre-se que incluímos o perfil `CLANG64 / MSYS2` no **Windows Terminal**.
+A compilação não funcionará em nenhum outro perfil, nem em outros terminais.
+
+Para instalar pacotes no MSYS2, usamos o `pacman`.
+Aqueles voltados para o ambiente CLANG64 são prefixados com `mingw-w64-clang-x86_64-`.
+A [documentação oficial](https://www.msys2.org/docs/package-management/) do MSYS2 explica em detalhes como funciona o gerenciamento de pacotes.
+Toda a lista de pacotes disponíveis pode ser vista no [repositório do MSYS2](https://packages.msys2.org/).
+
+Vamos instalar o compilador Clang e a ferramenta de compilação Ninja.
+Para instalá-los, execute o comando abaixo no terminal do MSYS2:
+
+```bash
+pacman -S mingw-w64-clang-x86_64-clang mingw-w64-clang-x86_64-ninja
+```
+
+Confirme a instalação digitando `Y` (ou `S`, se estiver em português) e pressionando `Enter`.
+
+Agora, com o terminal aberto na pasta `~/dev/my_c_code`, execute o comando abaixo para compilar o programa:
+
+```bash
+clang my_c_code.c -o my_c_code
+```
+
+Se tudo estiver correto, você não verá nenhuma mensagem de erro.
+Para executar o programa, digite `./my_c_code` e pressione `Enter`.
+
+![Comandos executados no terminal do MSYS2 para compilar e executar o programa my_c_code.c.](img/compiling_and_running_my_c_code.png)
