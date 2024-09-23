@@ -347,10 +347,10 @@ Como sempre, para atualizar as definições, feche o terminal atual e abra um no
 Ufa, finalmente terminamos as configurações iniciais!
 Agora vamos compilar um programa em C para testar se tudo está funcionando corretamente.
 
-Crie um diretório chamado `my_c_code` dentro de `~/dev`.
-Dentro dele, crie um arquivo chamado `my_c_code.c`.
+Crie um diretório chamado `hello_world` dentro de `~/dev`.
+Dentro dele, crie um arquivo chamado `hello_world.c`.
 
-![Comandos executados no Windows Terminal no perfil MSYS2 CLANG64 para criar um arquivo chamado my_c_code.c.](img/creating_my_c_code.png)
+![Comandos executados no Windows Terminal no perfil MSYS2 CLANG64 para criar um arquivo chamado hello_world.c.](img/create_hello_world_project.png)
 
 Abra o arquivo com um editor de texto qualquer e adicione o código abaixo:
 
@@ -385,13 +385,112 @@ pacman -S mingw-w64-clang-x86_64-clang mingw-w64-clang-x86_64-ninja
 
 Confirme a instalação digitando `Y` (ou `S`, se estiver em português) e pressionando `Enter`.
 
-Agora, com o terminal aberto na pasta `~/dev/my_c_code`, execute o comando abaixo para compilar o programa:
+O comando de compilação do Clang tem a seguinte estrutura:
 
 ```bash
-clang my_c_code.c -o my_c_code
+clang [opções] arquivo.c -o arquivo
+```
+
+- `[opções]`: são as opções de compilação, como `-c` para compilar sem linkar, `-g` para incluir informações de debug, etc.
+
+- `arquivo.c`: é o arquivo que será compilado.
+
+- `-o arquivo`: é o nome do arquivo de saída.
+
+Assim, com o terminal aberto na pasta `~/dev/hello_world`, execute:
+
+```bash
+clang hello_world.c -o hello_world
 ```
 
 Se tudo estiver correto, você não verá nenhuma mensagem de erro.
-Para executar o programa, digite `./my_c_code` e pressione `Enter`.
+Para executar o programa, digite `./hello_world` e pressione `Enter`.
 
-![Comandos executados no terminal do MSYS2 para compilar e executar o programa my_c_code.c.](img/compiling_and_running_my_c_code.png)
+![Comandos executados no terminal do MSYS2 para compilar e executar o programa hello_world.c.](img/compiling_and_running_hello_world_project.png)
+
+## Adicionando o Visual Studio Code à Path
+
+Para criar projetos maiores, é interessante utilizar um ambiente de desenvolvimento integrado (IDE).
+Para este guia, vamos utilizar o **Visual Studio Code**.
+
+Há um comando para abrir o Visual Studio Code diretamente no terminal, que é o `code`.
+Entretanto, se você tentar executá-lo, verá que ele não é reconhecido pelo MSYS2.
+Isso acontece porque o VsCode não está no Path do MSYS2.
+
+Para resolver isso, você pode adicionar o diretório do executável do Visual Studio Code ao Path, como fizemos com o Git.
+Mas dessa vez, vamos editar o arquivo diretamente no terminal.
+
+O MSYS2 tem um editor de texto chamado **nano**.
+Ele é um editor de texto simples, que pode ser usado diretamente no terminal.
+
+Precisamos abrir o arquivo `.zshrc` para adicionar o diretório do executável do Visual Studio Code ao Path.
+
+Execute o comando abaixo no terminal do MSYS2:
+
+```bash
+nano ~/.zshrc
+```
+
+Dentro do nano, adicione a linha abaixo logo após o caminho do Git, substituindo `[username]` pelo seu nome de usuário do Windows:
+
+```bash
+export PATH=$PATH:"/c/Users/[username]/AppData/Local/Programs/Microsoft VS Code/bin"
+```
+
+O arquivo deve ficar como este:
+
+![Editor de texto Nano com o conteúdo do arquivo .zshrc, em que adicionamos o executável do VsCode na Path.](img/adding_vscode_path.png)
+
+Para salvar as alterações, pressione `Ctrl` + `O` e `Enter`.
+Para sair do nano, pressione `Ctrl` + `X`.
+
+Em vez de fechar o terminal e abrir um novo, você pode recarregar o arquivo `.zshrc` com o comando `source ~/.zshrc`.
+
+Agora, você pode abrir o Visual Studio Code diretamente do terminal com o comando `code`.
+
+![Comandos executados no terminal do MSYS2 para editar o arquivo de configuração .zshrc, e então abrir o Visual Code Studio.](img/opening_vscode.png)
+
+## Compilando um projeto em C
+
+Disponibilizamos, na pasta `/code` deste repositório, um projetos em C e C++ que você pode utilizar para testar a compilação de código com vários arquivos separados.
+
+Retorne ao diretório `~/dev` e crie um diretório chamado `separate_function`.
+Acesse-o e abra o Visual Studio Code com o comando `code .`.
+
+No VsCode, crie um arquivo chamado `main.c` e adicione o código abaixo:
+
+```c
+#include <stdio.h>
+
+int sum(int a, int b);
+
+int main() {
+    int a = 5, b = 7;
+    int result = sum(a, b);
+    printf("The sum of %d and %d is %d.\n", a, b, result);
+    return 0;
+}
+```
+
+Crie um arquivo chamado `functions.c` e adicione o código abaixo:
+
+```c
+int sum(int a, int b) {
+    return a + b;
+}
+```
+
+A função principal `main` chama a função `sum`, que está definida em outro arquivo.
+Então, para fazer a compilação, precisamos passar os dois arquivos para o compilador.
+Internamente, o compilador fará a compilação de cada arquivo separadamente e, em seguida, fará a ligação entre eles.
+
+Para compilar o projeto, execute o comando abaixo no terminal do MSYS2.
+Perceba que você pode definir o nome do arquivo de saída com a opção `-o` antes dos arquivos de entrada.
+
+```bash
+clang -o separate_function main.c functions.c
+```
+
+Então, execute o programa com `./separate_function`.
+
+![alt text](img/compiling_and_running_separate_function_project.png)
