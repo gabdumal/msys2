@@ -82,10 +82,10 @@ Aceite a instalação, e reabra o Visual Studio Code no diretório `linked_nodes
 Nele, crie uma pasta chamada `.vscode`.
 Dentro dela, crie um arquivo chamado `tasks.json` e adicione o conteúdo do arquivo [`/code/linked_nodes/.vscode/tasks.json`](/code/linked_nodes/.vscode/tasks.json) deste repositório.
 
-O que ele faz é definir uma tarefa chamada `Clang: build` que compila o projeto com o Clang, incluindo todos os arquivos de cabeçalho e código definidos na raiz do projeto.
+O que ele faz é definir uma tarefa chamada `Clang: build C project` que compila o projeto com o Clang, incluindo todos os arquivos de cabeçalho e código definidos na raiz do projeto.
 O executável gerado terá o nome da pasta aberta no Visual Studio Code.
 
-Você pode executar a tarefa `Clang: build` pressionando `Ctrl` + `Shift` + `B`, ou acessando pela **paleta de Comandos** a opção `Tasks: Run Build Task`.
+Você pode executar a tarefa `Clang: build C project` pressionando `Ctrl` + `Shift` + `B`, ou acessando pela **paleta de Comandos** a opção `Tasks: Run Build Task`.
 
 ### Rodando o programa pela interface gráfica
 
@@ -98,7 +98,7 @@ Seleciona a opção "Debug C/C++ file".
 ![Imagem da porção superior direita da janela do VsCode com a extensão C/C++ habilitada, que mostra ícones de ação sobre o código.](/img/start_debugging_in_vscode.png)
 
 O Visual Studio Code compilará pedirá para você selecionar a tarefa de depuração.
-Selecione **GDB: build and launch**.
+Selecione **GDB: build and launch C project**.
 
 ![Pop-up do VsCode pedindo para selecionar uma tarefa de depuração. A selecionada é GDB: build and launch.](/img/select_debug_task_in_vscode.png)
 
@@ -115,11 +115,15 @@ Quando o depurador pausa, você pode inspecionar variáveis, ver o valor de pont
 Felizmente, o Visual Studio Code permite que você salve as configurações de compilação e depuração em arquivos globais, para serem utilizadas em outros projetos.
 
 Para salvar o `launch.json`, você deve criar uma nova entrada no arquivo `settings.json` do Visual Studio Code, chamada `launch`.
-Dentro dela, voê pode definir todas as configurações de depuração que você deseja que sejam globais.
+Dentro dela, você pode definir todas as configurações de depuração que você deseja que sejam globais.
 Disponibilizamos uma versão atualizada do arquivo `settings.json` em [`/config/debug_settings.json`](/config/debug_settings.json), que inclui a configuração global de depuração.
 
 Para as tarefas de compilação, você deve abrir a **paleta de comandos** do Visual Studio Code e pesquisar por **Tasks: Open User Tasks (JSON)**.
 Então, selecione **Other** e cole o conteúdo do arquivo [`/config/initial_debug_tasks.json`](/config/initial_debug_tasks.json) deste repositório.
+
+As tarefas e as configurações de depuração, quando configuradas tendo selecionado o perfil MSYS2 Clang64, serão salvas apenas para esse perfil.
+Dessa forma, eliminamos o risco de conflitos entre diferentes configurações de compilação e depuração.
+Mas lembre-se de sempre selecionar este perfil ao abrir o Visual Studio Code para que as configurações sejam aplicadas
 
 ---
 

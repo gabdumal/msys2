@@ -2,7 +2,7 @@
   "tasks": [
     {
       "type": "cppbuild",
-      "label": "Clang: build",
+      "label": "Clang: build C project",
       "command": "C:\\msys64\\clang64\\bin\\clang.exe",
       "args": [
         "-fcolor-diagnostics",
