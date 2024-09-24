@@ -58,3 +58,4 @@ Este guia pretende auxiliar a configurar uma máquina Windows para desenvolvimen
     - [Configuração de compilação](/chapters/cmake/text.md/#configuração-de-compilação)
     - [Compilação](/chapters/cmake/text.md/#compilação)
     - [Ignorando arquivos gerados](/chapters/cmake/text.md/#ignorando-arquivos-gerados)
+    - [Snippets para os arquivos `CMakeLists.txt`](/chapters/cmake/text.md/#snippets-para-os-arquivos-cmakeliststxt)

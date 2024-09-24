@@ -474,6 +474,44 @@ O segundo ignora todos os arquivos com a extensão `.exe`, que são executáveis
 
 Dessa forma, apenas os arquivos de código fonte e os `CMakeLists.txt` serão incluídos no controle de versão do Git.
 
+## Snippets para os arquivos `CMakeLists.txt`
+
+Configurar esses arquivos até que não é tão difícil, mas é meio trabalhoso.
+Felizmente, podemos automatizar parte desse processo configurando _snippets_ no VsCode!
+
+_Snippets_ são atalhos que inserem blocos de código quando você digita um comando específico.
+Por exemplo, ao digitar `for` e confirmar a sugestão do VsCode, o editor de texto insere um bloco de código que cria um laço `for`.
+
+Eu configurei dois _snippets_ para os arquivos `CMakeLists.txt`.
+Você pode encontrá-los em [`/config/cmake_snippets.json`](/config/cmake_snippets.json).
+
+Para adicioná-los ao seu VsCode, abra a **Paleta de Comandos** com `Ctrl+Shift+P` e digite `Preferences: Configure Snippets`.
+
+![Paleta de comandos do Visual Studio Code, em que se seleciona a opção de configurar snippets.](configure_snippets.png)
+
+Então, selecione a opção `cmake (CMake)`.
+
+![Paleta de comandos do Visual Studio Code, em que se seleciona o arquivo de configurações de snippets do Cmake.](selecting_cmake_snippets_file.png)
+
+O primeiro configura um projeto em C++ com as configurações que usamos até agora.
+Você pode chamá-lo ao digitar `cmake-main` e confirmar a sugestão do VsCode.
+
+![Utilização do snippet de configurar o arquivo CMakeLists.txt no Visual Studio Code.](using_snippet.png)
+
+Então faça as seguintes modificações:
+
+- Altere o nome do projeto `my_project` para o nome do seu projeto;
+- Substitua `add_subdirectory(my_subdirectory)` pelos subdiretórios do seu projeto;
+- Substitua `my_dependencies` pelas bibliotecas de que seu projeto depende.
+
+O segundo configura uma biblioteca estática, como fizemos para o módulo `edge`.
+Você pode chamá-lo ao digitar `cmake-library` e confirmar a sugestão do VsCode.
+
+Então faça as seguintes modificações:
+
+- Altere o nome da biblioteca `my_library` para o nome da sua biblioteca;
+- Substitua `my_dependencies` pelas outras bibliotecas de que sua biblioteca depende.
+
 ---
 
 > ⬅️ [**Capítulo anterior**](/chapters/compiling_cpp_project/text.md)\
