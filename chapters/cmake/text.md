@@ -32,7 +32,7 @@ Esse pacote inclui as seguintes extensões:
 
 Caso seja disparado um pop-up pedindo para selecionar um kit de compilação, selecione o kit `Clang`.
 
-![Pop-up do Visual Studio Code, em que é solicitado escolher um kit de compilação.](selecting_compiling_kit.png)
+![Pop-up do Visual Studio Code, em que é solicitado escolher um kit de compilação.](/img/selecting_compiling_kit.png)
 
 ## Criando o projeto
 
@@ -43,7 +43,7 @@ Dentro do diretório `oriented_graph`, crie um arquivo `main.cpp` e três pastas
 Cada pasta deve conter um arquivo `.cpp` e um arquivo `.h` com o mesmo nome da pasta.
 **Ignore** os arquivos `CMakeLists.txt` por enquanto.
 
-Você pode encontrar o código completo deste projeto na pasta [`/code/oriented_graph`](/code/graph) deste repositório.
+Você pode encontrar o código completo deste projeto na pasta [`/code/oriented_graph`](/code/oriented_graph) deste repositório.
 Copie o código de cada arquivo para o seu projeto.
 
 Assim como antes, você pode compilar esse projeto diretamente pelo `clang++` ou utilizando os arquivos `tasks.json` e `launch.json` do Visual Studio Code.
@@ -69,7 +69,7 @@ Crie um arquivo chamado `CMakeLists.txt` na raiz da pasta `oriented_graph`.
 Atente-se à letras maiúsculas e minúsculas no nome do arquivo, ele precisa estar escrito exatamente como acima.
 
 Este arquivo é responsável por definir as configurações do projeto e as dependências necessárias para a compilação.
-Seu código completo está disponível em [`/code/oriented_graph/CMakeLists.txt`](/code/graph/CMakeLists.txt).
+Seu código completo está disponível em [`/code/oriented_graph/CMakeLists.txt`](/code/oriented_graph/CMakeLists.txt).
 
 ### Versões
 
@@ -247,7 +247,7 @@ target_include_directories(edge
 ```
 
 Mas há um detalhe: o módulo `edge` depende de outro módulo definido no projeto.
-Veja o arquivo [`/code/oriented_graph/edge/edge.hpp`](/code/graph/edge/edge.hpp).
+Veja o arquivo [`/code/oriented_graph/edge/edge.hpp`](/code/oriented_graph/edge/edge.hpp).
 
 ```cpp
 ...
@@ -317,7 +317,7 @@ target_include_directories(graph
 )
 ```
 
-O módulo `graph` depende dos módulos `node` e `edge`, como indicado no arquivo [`/code/oriented_graph/graph/graph.hpp`](/code/graph/graph/graph.hpp).
+O módulo `graph` depende dos módulos `node` e `edge`, como indicado no arquivo [`/code/oriented_graph/graph/graph.hpp`](/code/oriented_graph/graph/graph.hpp).
 
 ```cpp
 ...
@@ -352,7 +352,7 @@ target_link_libraries(graph
 Definimos cada um dos módulos do projeto, mas ainda não dissemos ao CMake que eles devem ser usados para gerar nosso executável.
 A forma de fazer isso é a mesma que usamos para definir as dependências entre os módulos.
 
-Veja que no arquivo [`/code/oriented_graph/main.cpp`](/code/graph/main.cpp), incluímos o arquivo de cabeçalho do módulo `graph`.
+Veja que no arquivo [`/code/oriented_graph/main.cpp`](/code/oriented_graph/main.cpp), incluímos o arquivo de cabeçalho do módulo `graph`.
 
 ```cpp
 ...
@@ -514,5 +514,6 @@ Então faça as seguintes modificações:
 
 ---
 
+> ➡️ [**Próximo capítulo**](/chapters/cmake_tools/text.md)\
 > ⬅️ [**Capítulo anterior**](/chapters/compiling_cpp_project/text.md)\
 > 🏠 [**Página inicial**](/README.md)

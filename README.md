@@ -59,3 +59,7 @@ Este guia pretende auxiliar a configurar uma máquina Windows para desenvolvimen
     - [Compilação](/chapters/cmake/text.md/#compilação)
     - [Ignorando arquivos gerados](/chapters/cmake/text.md/#ignorando-arquivos-gerados)
     - [Snippets para os arquivos `CMakeLists.txt`](/chapters/cmake/text.md/#snippets-para-os-arquivos-cmakeliststxt)
+- [CMake Tools no VsCode](/chapters/cmake_tools/text.md)
+  - [Compilando o projeto](/chapters/cmake_tools/text.md/#compilando-o-projeto)
+  - [Executando o projeto](/chapters/cmake_tools/text.md/#executando-o-projeto)
+  - [Depurando o projeto](/chapters/cmake_tools/text.md/#depurando-o-projeto)

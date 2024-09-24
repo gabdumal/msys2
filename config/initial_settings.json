@@ -11,12 +11,18 @@
   "terminal.integrated.profiles.windows": {
     "MSYS2 CLANG64": {
       "args": [
-        "/c",
-        "C:\\msys64\\msys2_shell.cmd -defterm -here -no-start -clang64 -shell zsh --login -i"
+        "-defterm",
+        "-here",
+        "-no-start",
+        "-clang64",
+        "-shell",
+        "zsh",
+        "--login",
+        "-i"
       ],
       "icon": "terminal-bash",
       "name": "MSYS2 CLANG64",
-      "path": "cmd.exe"
+      "path": "C:\\msys64\\msys2_shell.cmd"
     }
   }
 }
