@@ -61,6 +61,6 @@ Você pode precisar fazer isso para outros programas que você instalar no MSYS2
 
 ---
 
-> ➡️ [**Próximo capítulo**](/chapters/oh_my_zsh.md)\
-> ⬅️ [**Capítulo anterior**](/chapters/windows_terminal.md)\
+> ➡️ [**Próximo capítulo**](/chapters/oh_my_zsh/text.md)\
+> ⬅️ [**Capítulo anterior**](/chapters/windows_terminal/text.md)\
 > 🏠 [**Página inicial**](/README.md)

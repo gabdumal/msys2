@@ -12,5 +12,5 @@ Execute o instalador e siga as instruções.
 
 ---
 
-> ➡️ [**Próximo capítulo**](/chapters/msys2.md)\
+> ➡️ [**Próximo capítulo**](/chapters/msys2/text.md)\
 > 🏠 [**Página inicial**](/README.md)

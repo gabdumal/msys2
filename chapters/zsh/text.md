@@ -35,7 +35,7 @@ Você verá uma mensagem de boas-vindas do zsh.
 Ele te guiará por um processo de configuração inicial.
 Sinta-se à vontade para configurar como desejar.
 
-![Mensagem de boas vindas do Zsh.](/img/zsh-welcome.png)
+![Mensagem de boas vindas do Zsh.](zsh-welcome.png)
 
 Para navegar pelas opções, você deve digitar o número ou letra correspondente à opção desejada e pressionar `Enter`.
 A fim de configurar, pressione `1` e `Enter`.
@@ -44,6 +44,6 @@ A seguinte sequência de teclas pode ser usada para fazer uma configuração pad
 
 ---
 
-> ➡️ [**Próximo capítulo**](/chapters/windows_terminal.md)\
-> ⬅️ [**Capítulo anterior**](/chapters/msys2.md)\
+> ➡️ [**Próximo capítulo**](/chapters/windows_terminal/text.md)\
+> ⬅️ [**Capítulo anterior**](/chapters/msys2/text.md)\
 > 🏠 [**Página inicial**](/README.md)

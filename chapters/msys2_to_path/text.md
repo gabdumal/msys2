@@ -17,6 +17,6 @@ Agora, todos os pacotes que você instalar no ambiente CLANG64 do MSYS2 estarão
 
 ---
 
-> ➡️ [**Próximo capítulo**](/chapters/c_project_vscode.md)\
-> ⬅️ [**Capítulo anterior**](/chapters/compiling_c_project.md)\
+> ➡️ [**Próximo capítulo**](/chapters/c_project_vscode/text.md)\
+> ⬅️ [**Capítulo anterior**](/chapters/compiling_c_project/text.md)\
 > 🏠 [**Página inicial**](/README.md)

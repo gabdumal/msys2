@@ -41,10 +41,10 @@ clang main.c functions.c -o separate_function
 
 Então, execute o programa com `./separate_function`.
 
-![Comandos executados no terminal do MSYS2 para compilar e executar um projeto em C com múltiplos arquivos.](/img/compiling_and_running_separate_function_project.png)
+![Comandos executados no terminal do MSYS2 para compilar e executar um projeto em C com múltiplos arquivos.](compiling_and_running_separate_function_project.png)
 
 ---
 
-> ➡️ [**Próximo capítulo**](/chapters/msys2_to_path.md)\
-> ⬅️ [**Capítulo anterior**](/chapters/vscode_to_path.md)\
+> ➡️ [**Próximo capítulo**](/chapters/msys2_to_path/text.md)\
+> ⬅️ [**Capítulo anterior**](/chapters/vscode_to_path/text.md)\
 > 🏠 [**Página inicial**](/README.md)

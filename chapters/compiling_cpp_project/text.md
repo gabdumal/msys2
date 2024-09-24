@@ -39,7 +39,7 @@ Crie duas pastas dentro do projeto: `tree` e `node`.
 - Dentro de `tree`, crie um arquivo `tree.cpp` e um `tree.h`.
 - Dentro de `node`, crie um arquivo `node.cpp` e um `node.h`.
 
-Copie o código dos arquivos em [`binary_tree`](/code/binary_tree/) e cole nos arquivos correspondentes do seu projeto.
+Copie o código dos arquivos em [`/code/binary_tree`](/code/binary_tree/) e cole nos arquivos correspondentes do seu projeto.
 
 Para compilar um projeto em C++, utilizamos o seguinte comando:
 
@@ -57,19 +57,21 @@ clang++ tree/tree.cpp node/node.cpp main.cpp -I tree -I node -o binary_tree
 
 Se tudo estiver correto, ao executar `./binary_tree`, você verá os nós da árvore binária sendo impressos no terminal em ordem crescente.
 
-![Comandos para compilação e execução do projeto de implementação de uma árvore binária.](/img/compiling_and_running_binary_tree_project.png)
+![Comandos para compilação e execução do projeto de implementação de uma árvore binária.](compiling_and_running_binary_tree_project.png)
+
+## Configurando tarefa de compilação
 
 Também podemos criar um arquivo `tasks.json` para compilar o projeto diretamente do Visual Studio Code.
-Veja o arquivo definido em [`binary_tree/.vscode/tasks.json`](/code/binary_tree/.vscode/tasks.json).
+Copie o arquivo definido em [`/code/binary_tree/.vscode/tasks.json`](/code/binary_tree/.vscode/tasks.json) para o seu projeto.
 
 Fizemos algumas mudanças em relação à tarefa de compilação em C.
 Primeiramente, alteramos o nome do comando, para não confundir com o anterior.
 
 ```json
 // Antes
-"label": "Clang: build C project",
+"label": "Clang: build C project (all files in root)",
 // Depois
-"label": "Clang: build C++ project",
+"label": "Clang: build C++ project (binary tree)",
 ```
 
 Então, alteramos o comando de compilação para `clang++`.
@@ -129,9 +131,12 @@ Como esse arquivo deve ser alterado para cada estrutura de um projeto, não é p
 Por isso, é importante entender o que cada parte do arquivo faz e adaptá-lo conforme necessário.
 
 Para executá-lo, abra a **Paleta de Comandos** do Visual Studio Code com `Ctrl+Shift+P` e digite `Tasks: Run Build Task`.
-Selecione a tarefa `Clang: build C++ project` e pressione `Enter`.
 
-![Pop-up em que o Visual Studio Code pede que seja selecionada uma tarefa de compilação.](/img/selecting_compiling_task_in_vscode.png)
+![Paleta de Comandos do VsCode em que se pesquisa a opção de rodar a tarefa de compilar um projeto.](running_build_task_in_vscode.png)
+
+Selecione a tarefa `Clang: build C++ project (binary tree)` e pressione `Enter`.
+
+![Pop-up em que o Visual Studio Code pede que seja selecionada uma tarefa de compilação.](selecting_compile_task_in_vscode.png)
 
 ## Depurando o projeto
 
@@ -142,48 +147,58 @@ O arquivo de configuração de depuração que fizemos anteriormente tinha duas 
 
 Uma vez que mudamos o nome da tarefa de compilação, precisamos alterar essa chamada no arquivo de configuração de depuração.
 
-Veja o arquivo de configuração de depuração em [`binary_tree/.vscode/launch.json`](/code/binary_tree/.vscode/launch.json).
+Disponibilizamos a versão atualizada neste repositório.
+Copie o arquivo de configuração de depuração em [`/code/binary_tree/.vscode/launch.json`](/code/binary_tree/.vscode/launch.json) para o seu projeto.
 
 Alteramos o nome da tarefa de depuração:
 
 ```json
 // Antes
-"name": "GDB: build and launch C project",
+"name": "GDB: build and launch C project (all files in root)",
 // Depois
-"name": "GDB: build and launch C++ project",
+"name": "GDB: build and launch C++ project (binary tree)",
 ```
 
 E o nome da tarefa de compilação que é chamada:
 
 ```json
 // Antes
-"preLaunchTask": "Clang: build C project",
+"preLaunchTask": "Clang: build C project (all files in root)",
 // Depois
-"preLaunchTask": "Clang: build C++ project",
+"preLaunchTask": "Clang: build C++ project (binary tree)",
 ```
 
-Caso você sempre defina o nome da tarefa de compilação como `Clang: build C++ project`, não é necessário alterar o arquivo de configuração de depuração toda vez que criar um novo projeto em C++.
-
-Poderemos então defini-lo nas configurações do perfil MSYS2 Clang64, adicionando mais uma entrada no atributo `"launch"`.
-O arquivo `settings.json` atualizado foi disponibilizado neste repositório em [`config/debug_cpp_settings.json`](/config/debug_cpp_settings.json).
-
-Lembre-se: para editar as configurações do perfil, abra a **Paleta de Comandos** do Visual Studio Code com `Ctrl+Shift+P` e digite `Preferences: Open User Settings (JSON)`.
-
-Agora, sempre que clicar no botão de depuração, escolha a tarefa `GDB: build and launch C++ project`.
-
-Botão de depuração:
+Agora clique no botão de depuração e escolha a tarefa `GDB: build and launch C++ project (binary tree)`.
 
 ![Imagem da porção superior direita da janela do VsCode com a extensão C/C++ habilitada, que mostra ícones de ação sobre o código.](/img/start_debugging_in_vscode.png)
 
 Seleção da tarefa de depuração:
 
-![Pop-up em que o Visual Studio Code pede que seja selecionada uma tarefa de depuração.](/img/selecting_debugging_cpp_task_in_vscode.png)
+![Pop-up em que o Visual Studio Code pede que seja selecionada uma tarefa de depuração.](selecting_debug_task_in_vscode.png)
 
 Visualização da depuração:
 
-![Visualização de depuração sendo feita no Visual Studio Code.](/img/debugging_cpp_in_vscode.png)
+![Visualização de depuração sendo feita no Visual Studio Code.](debugging_cpp_in_vscode.png)
+
+## Configurações globais
+
+Assim como fizemos para projetos em C, você poderia criar um arquivo `tasks.json` que compila todos os arquivos `.cpp` da raiz de um projeto, sem se importar com a estrutura de pastas.
+
+Disponibilizamos o arquivo `tasks.json` configurado dessa forma em [`/config/cpp_tasks.json`](/config/cpp_tasks.json).
+O nome da tarefa de compilação definida é `Clang: build C++ project (all files in root)`.
+
+Também disponibilizamos uma versão atualizada do arquivo `settings.json` em [`/config/cpp_settings.json`](/config/cpp_settings.json), que inclui a configuração global de depuração.
+O nome da tarefa de depuração definida é `GDB: build and launch C++ project (all files in root)`.
+
+Lembre-se: para editar as configurações do perfil, abra a **Paleta de Comandos** do Visual Studio Code com `Ctrl+Shift+P` e digite `Preferences: Open User Settings (JSON)`.
+
+![Paleta de Comandos do VsCode em que se pesquisa a opção de abrir as configurações do usuário.](/img/opening_user_settings_in_vscode.png)
+
+E para editar as tarefas de compilação, abra a **Paleta de Comandos** do Visual Studio Code com `Ctrl+Shift+P` e digite `Tasks: Open User Tasks (JSON)`.
+
+![Paleta de Comandos do VsCode em que se pesquisa a opção de abrir as tarefas do usuário.](/img/opening_user_tasks_in_vscode.png)
 
 ---
 
-> ⬅️ [**Capítulo anterior**](/chapters/c_project_vscode.md)\
+> ⬅️ [**Capítulo anterior**](/chapters/c_project_vscode/text.md)\
 > 🏠 [**Página inicial**](/README.md)

@@ -53,6 +53,8 @@ Execute o comando abaixo no terminal Mintty:
 pacman -Syu
 ```
 
+![Executando comando de atualizar pacotes no terminal Mintty.](running_command_on_mintty.png)
+
 O shell perguntará se você deseja proceder com o processo.
 Digite `Y` e pressione `Enter`.
 
@@ -128,7 +130,7 @@ Vamos lá, crie normalmente, utilizando o Windows Explorer, uma pasta chamada `d
 Crie dentro dela um arquivo de texto qualquer, para testarmos o link simbólico.
 Chamei o meu de `ola_mundo.txt`.
 
-![Conteúdo do arquivo ola_mundo.txt.](/img/ola_mundo.png)
+![Conteúdo do arquivo ola_mundo.txt.](ola_mundo_text.png)
 
 Agora, vamos criar o link simbólico.
 Para isso, abra o Prompt de comando do Windows, ou seja, o `cmd`.
@@ -152,6 +154,6 @@ Todas as alterações feitas dentro dela serão refletidas no MSYS2, e vice-vers
 
 ---
 
-> ➡️ [**Próximo capítulo**](/chapters/zsh.md)\
-> ⬅️ [**Capítulo anterior**](/chapters/installing_vscode.md)\
+> ➡️ [**Próximo capítulo**](/chapters/zsh/text.md)\
+> ⬅️ [**Capítulo anterior**](/chapters/installing_vscode/text.md)\
 > 🏠 [**Página inicial**](/README.md)

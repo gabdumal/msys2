@@ -29,7 +29,7 @@ export PATH=$PATH:"/c/Users/[username]/AppData/Local/Programs/Microsoft VS Code/
 
 O arquivo deve ficar como este:
 
-![Editor de texto Nano com o conteúdo do arquivo .zshrc, em que adicionamos o executável do VsCode na Path.](/img/adding_vscode_path.png)
+![Editor de texto Nano com o conteúdo do arquivo .zshrc, em que adicionamos o executável do VsCode na Path.](adding_vscode_path.png)
 
 Para salvar as alterações, pressione `Ctrl` + `O` e `Enter`.
 Para sair do nano, pressione `Ctrl` + `X`.
@@ -38,10 +38,10 @@ Em vez de fechar o terminal e abrir um novo, você pode recarregar o arquivo `.z
 
 Agora, você pode abrir o Visual Studio Code diretamente do terminal com o comando `code`.
 
-![Comandos executados no terminal do MSYS2 para editar o arquivo de configuração .zshrc, e então abrir o Visual Code Studio.](/img/opening_vscode.png)
+![Comandos executados no terminal do MSYS2 para editar o arquivo de configuração .zshrc, e então abrir o Visual Code Studio.](opening_vscode.png)
 
 ---
 
-> ➡️ [**Próximo capítulo**](/chapters/compiling_c_project.md)\
-> ⬅️ [**Capítulo anterior**](/chapters/compiling_c_code.md)\
+> ➡️ [**Próximo capítulo**](/chapters/compiling_c_project/text.md)\
+> ⬅️ [**Capítulo anterior**](/chapters/compiling_c_code/text.md)\
 > 🏠 [**Página inicial**](/README.md)

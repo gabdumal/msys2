@@ -2,10 +2,10 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "GDB: build and launch C project (all files in root)",
+      "name": "GDB: build and launch C++ project (binary tree)",
       "type": "cppdbg",
       "request": "launch",
-      "preLaunchTask": "Clang: build C project (all files in root)",
+      "preLaunchTask": "Clang: build C++ project (binary tree)",
       "program": "${workspaceFolder}/${workspaceFolderBasename}.exe",
       "args": [],
       "stopAtEntry": false,

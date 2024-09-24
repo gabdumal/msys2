@@ -34,6 +34,6 @@ Como sempre, para atualizar as definições, feche o terminal atual e abra um no
 
 ---
 
-> ➡️ [**Próximo capítulo**](/chapters/compiling_c_code.md)\
-> ⬅️ [**Capítulo anterior**](/chapters/git.md)\
+> ➡️ [**Próximo capítulo**](/chapters/compiling_c_code/text.md)\
+> ⬅️ [**Capítulo anterior**](/chapters/git/text.md)\
 > 🏠 [**Página inicial**](/README.md)

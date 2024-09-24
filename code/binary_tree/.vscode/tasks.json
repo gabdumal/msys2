@@ -1,36 +1,35 @@
 {
-    "tasks": [
-      {
-        "type": "cppbuild",
-        "label": "Clang: build C++ project",
-        "command": "C:\\msys64\\clang64\\bin\\clang++.exe",
-        "args": [
-          "-fcolor-diagnostics",
-          "-fansi-escape-codes",
-          "-g",
-          "${workspaceFolder}\\*.cpp",
-          "${workspaceFolder}\\node\\*.cpp",
-          "${workspaceFolder}\\tree\\*.cpp",
-          "-I",
-          "${workspaceFolder}",
-          "-I",
-          "${workspaceFolder}\\node",
-          "-I",
-          "${workspaceFolder}\\tree",
-          "-o",
-          "${workspaceFolder}\\${workspaceFolderBasename}.exe"
-        ],
-        "options": {
-          "cwd": "C:\\msys64\\clang64\\bin"
-        },
-        "problemMatcher": ["$gcc"],
-        "group": {
-          "kind": "build",
-          "isDefault": true
-        },
-        "detail": "Tarefa de compilação de um projeto em C++. Compila todos os arquivos CPP na raiz do projeto, e nas pastas /node e /tree, em um único executável."
-      }
-    ],
-    "version": "2.0.0"
-  }
-  
+  "tasks": [
+    {
+      "type": "cppbuild",
+      "label": "Clang: build C++ project (binary tree)",
+      "command": "C:\\msys64\\clang64\\bin\\clang++.exe",
+      "args": [
+        "-fcolor-diagnostics",
+        "-fansi-escape-codes",
+        "-g",
+        "${workspaceFolder}\\*.cpp",
+        "${workspaceFolder}\\node\\*.cpp",
+        "${workspaceFolder}\\tree\\*.cpp",
+        "-I",
+        "${workspaceFolder}",
+        "-I",
+        "${workspaceFolder}\\node",
+        "-I",
+        "${workspaceFolder}\\tree",
+        "-o",
+        "${workspaceFolder}\\${workspaceFolderBasename}.exe"
+      ],
+      "options": {
+        "cwd": "C:\\msys64\\clang64\\bin"
+      },
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "Tarefa de compilação de um projeto em C++. Compila todos os arquivos CPP na raiz do projeto, e nas pastas /node e /tree, em um único executável."
+    }
+  ],
+  "version": "2.0.0"
+}

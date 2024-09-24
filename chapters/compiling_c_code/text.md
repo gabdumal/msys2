@@ -6,7 +6,7 @@ Agora vamos compilar um programa em C para testar se tudo está funcionando corr
 Crie um diretório chamado `hello_world` dentro de `~/dev`.
 Dentro dele, crie um arquivo chamado `hello_world.c`.
 
-![Comandos executados no Windows Terminal no perfil MSYS2 CLANG64 para criar um arquivo chamado hello_world.c.](/img/create_hello_world_project.png)
+![Comandos executados no Windows Terminal no perfil MSYS2 CLANG64 para criar uma pasta chamada "hello_world" e um arquivo chamado "hello_world.c".](creating_hello_world.png)
 
 Abra o arquivo com um editor de texto qualquer e adicione o código abaixo:
 
@@ -63,10 +63,10 @@ clang hello_world.c -o hello_world
 Se tudo estiver correto, você não verá nenhuma mensagem de erro.
 Para executar o programa, digite `./hello_world` e pressione `Enter`.
 
-![Comandos executados no terminal do MSYS2 para compilar e executar o programa hello_world.c.](/img/compiling_and_running_hello_world_project.png)
+![Comandos executados no terminal do MSYS2 para compilar e executar o programa hello_world.c.](compiling_and_running_hello_world_project.png)
 
 ---
 
-> ➡️ [**Próximo capítulo**](/chapters/vscode_to_path.md)\
-> ⬅️ [**Capítulo anterior**](/chapters/oh_my_zsh.md)\
+> ➡️ [**Próximo capítulo**](/chapters/vscode_to_path/text.md)\
+> ⬅️ [**Capítulo anterior**](/chapters/oh_my_zsh/text.md)\
 > 🏠 [**Página inicial**](/README.md)

@@ -1,9 +1,6 @@
 {
   "tasks": [
     {
-      "type": "cppbuild",
-      "label": "Clang: build C project",
-      "command": "C:\\msys64\\clang64\\bin\\clang.exe",
       "args": [
         "-fcolor-diagnostics",
         "-fansi-escape-codes",
@@ -14,15 +11,18 @@
         "-o",
         "${workspaceFolder}\\${workspaceFolderBasename}.exe"
       ],
+      "command": "C:\\msys64\\clang64\\bin\\clang.exe",
+      "detail": "Tarefa de compilação de um projeto em C. Compila todos os arquivos C na raiz do projeto em um único executável.",
+      "group": {
+        "isDefault": true,
+        "kind": "build"
+      },
+      "label": "Clang: build C project (all files in root)",
       "options": {
         "cwd": "C:\\msys64\\clang64\\bin"
       },
       "problemMatcher": ["$gcc"],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "detail": "Tarefa de compilação de um projeto em C. Compila todos os arquivos C na raiz do projeto em um único executável."
+      "type": "cppbuild"
     }
   ],
   "version": "2.0.0"
