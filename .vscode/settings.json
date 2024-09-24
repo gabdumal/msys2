@@ -9,6 +9,7 @@
     "Mintty",
     "mklink",
     "MSYS",
-    "pacman"
+    "pacman",
+    "Wextra"
   ]
 }

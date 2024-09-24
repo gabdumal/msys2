@@ -200,5 +200,6 @@ E para editar as tarefas de compilação, abra a **Paleta de Comandos** do Visua
 
 ---
 
+> ➡️ [**Próximo capítulo**](/chapters/cmake/text.md)\
 > ⬅️ [**Capítulo anterior**](/chapters/c_project_vscode/text.md)\
 > 🏠 [**Página inicial**](/README.md)
