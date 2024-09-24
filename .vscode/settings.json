@@ -1,11 +1,14 @@
 {
   "cSpell.words": [
     "commandline",
+    "cout",
     "defterm",
+    "endl",
+    "iostream",
     "linkar",
     "Mintty",
     "mklink",
     "MSYS",
     "pacman"
-]
+  ]
 }

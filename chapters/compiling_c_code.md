@@ -46,14 +46,13 @@ Confirme a instalação digitando `Y` (ou `S`, se estiver em português) e press
 O comando de compilação do Clang tem a seguinte estrutura:
 
 ```bash
-clang [opções] arquivo.c -o arquivo
+clang [opções] arquivo.c -include -o nome
 ```
 
 - `[opções]`: são as opções de compilação, como `-c` para compilar sem linkar, `-g` para incluir informações de debug, etc.
 
 - `arquivo.c`: é o arquivo que será compilado.
-
-- `-o arquivo`: é o nome do arquivo de saída.
+- `-o nome`: é o nome do arquivo executável de saída.
 
 Assim, com o terminal aberto na pasta `~/dev/hello_world`, execute:
 

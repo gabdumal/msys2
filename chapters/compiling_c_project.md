@@ -36,7 +36,7 @@ Para compilar o projeto, execute o comando abaixo no terminal do MSYS2.
 Perceba que você pode definir o nome do arquivo de saída com a opção `-o` antes dos arquivos de entrada.
 
 ```bash
-clang -o separate_function main.c functions.c
+clang main.c functions.c -o separate_function
 ```
 
 Então, execute o programa com `./separate_function`.

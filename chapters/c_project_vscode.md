@@ -1,4 +1,4 @@
-# Criando projeto em C no Visual Studio Code
+# Criando um projeto em C no Visual Studio Code
 
 O Visual Studio Code é um editor de texto muito poderoso, com várias extensões que facilitam o desenvolvimento de software.
 
@@ -54,7 +54,7 @@ Vamos compilar o projeto pelo terminal integrado do Visual Studio Code.
 Abra o terminal integrado com `Ctrl` + `` ` `` e execute o comando abaixo:
 
 ```bash
-clang -o linked_nodes -include node.h main.c node.c
+clang main.c node.c -include node.h -o linked_nodes
 ```
 
 Esse comando compila os arquivos `main.c` e `node.c`, incluindo o arquivo de cabeçalho `node.h`, e gera o arquivo executável `linked_nodes`.
@@ -82,7 +82,7 @@ Aceite a instalação, e reabra o Visual Studio Code no diretório `linked_nodes
 Nele, crie uma pasta chamada `.vscode`.
 Dentro dela, crie um arquivo chamado `tasks.json` e adicione o conteúdo do arquivo [`/code/linked_nodes/.vscode/tasks.json`](/code/linked_nodes/.vscode/tasks.json) deste repositório.
 
-O que ele faz é definir uma tarefa chamada `Clang: build C project` que compila o projeto com o Clang, incluindo todos os arquivos de cabeçalho e código definidos na raiz do projeto.
+O que ele faz é definir uma tarefa chamada `Clang: build C project` que compila o projeto com o Clang, incluindo todos os arquivos de cabeçalho e todos os arquivos de código definidos na raiz do projeto.
 O executável gerado terá o nome da pasta aberta no Visual Studio Code.
 
 Você pode executar a tarefa `Clang: build C project` pressionando `Ctrl` + `Shift` + `B`, ou acessando pela **paleta de Comandos** a opção `Tasks: Run Build Task`.
@@ -100,7 +100,7 @@ Seleciona a opção "Debug C/C++ file".
 O Visual Studio Code compilará pedirá para você selecionar a tarefa de depuração.
 Selecione **GDB: build and launch C project**.
 
-![Pop-up do VsCode pedindo para selecionar uma tarefa de depuração. A selecionada é GDB: build and launch.](/img/select_debug_task_in_vscode.png)
+![Pop-up do VsCode pedindo para selecionar uma tarefa de depuração. A selecionada é GDB: build and launch.](/img/selecting_debugging_c_task_in_vscode.png)
 
 Essa ação executará a tarefa que definimos no arquivo `tasks.json` e gerará o executável `linked_nodes` na pasta do projeto.
 Em seguida, abrirá o depurador em um terminal separado.
@@ -108,7 +108,7 @@ Em seguida, abrirá o depurador em um terminal separado.
 Caso você coloque um ponto de interrupção no código, o programa será executado até que aquela linha seja atingida.
 Quando o depurador pausa, você pode inspecionar variáveis, ver o valor de ponteiros, e utilizar outras ferramentas que o sistema de depuração oferece.
 
-![Visualização de depuração sendo feita no Visual Studio Code.](/img/debugging_in_vscode.png)
+![Visualização de depuração sendo feita no Visual Studio Code.](/img/debugging_c_in_vscode.png)
 
 ### Configurações globais
 
@@ -127,5 +127,6 @@ Mas lembre-se de sempre selecionar este perfil ao abrir o Visual Studio Code par
 
 ---
 
+> ➡️ [**Próximo capítulo**](/chapters/compiling_cpp_project.md)\
 > ⬅️ [**Capítulo anterior**](/chapters/msys2_to_path.md)\
 > 🏠 [**Página inicial**](/README.md)
