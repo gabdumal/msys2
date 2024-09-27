@@ -26,6 +26,11 @@
         "request": "launch",
         "setupCommands": [
           {
+            "description": "Source the .gdbinit file",
+            "ignoreFailures": true,
+            "text": "source C:/msys64/home/${env:USERNAME}/.gdbinit"
+          },
+          {
             "description": "Enable pretty-printing for gdb",
             "ignoreFailures": true,
             "text": "-enable-pretty-printing"

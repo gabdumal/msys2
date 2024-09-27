@@ -38,6 +38,12 @@ set print pretty on
 set print object on
 
 python
-exec(open("C:/msys64/home/cgmal/.local/libcxx-pretty-printers/register_pretty_printers.py").read())
+import sys, os
+username = os.getenv('USERNAME') or os.getenv('USER')
+libcxx_pretty_printers_script_path = f'C:/msys64/home/{username}/.local/libcxx-pretty-printers/register_pretty_printers.py'
+if os.path.exists(libcxx_pretty_printers_script_path):
+    gdb.execute('source ' + libcxx_pretty_printers_script_path)
+else:
+    print("Error: libcxx pretty printers script not found.")
 end
 EOL

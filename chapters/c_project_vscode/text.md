@@ -86,11 +86,28 @@ Ese arquivo é responsável por carregar o script toda vez que o GDB é executad
 Esse processo é um pouco mais complicado, então criamos um script que faz isso tudo automaticamente!
 Ele está disponível em [`/config/install_pretty_printer.sh`](/config/install_pretty_printer.sh) deste repositório.
 
-Você pode baixar esse script acessando o link acima e clicando em **Raw**.
+Você pode baixar esse script acessando o link acima e clicando no ícone de **Download** no canto superior direito do arquivo.
+
+![Página do script de instalação do pretty-printer no GitHub, com o botão de download destacado.](downloading_install_pretty_printer_script.png)
+
+Mova o script para a pasta `/home/[username]/dev` e execute-o com os comandos abaixo:
+
+```bash
+chmod +x ./install_pretty_printer.sh
+sh ./install_pretty_printer.sh
+```
+
+O comando `chmod +x` torna o script executável, e o comando `sh` o executa.
+
+![Comandos executados no terminal do MSYS2 para tornar o script de instalação do pretty-printer executável e executá-lo.](running_install_pretty_printer_script.png)
+
+Se tudo ocorrer bem, você verá que um arquivo chamado `.gdbinit` foi criado na pasta `/home/[username]`.
+
+![Arquivo .gdbinit criado na pasta /home/[username] após a execução do script de instalação do pretty-printer.](gdbinit_created.png)
 
 ### Compilando pela interface gráfica
 
-Aceite a instalação, e reabra o Visual Studio Code no diretório `linked_nodes`.
+Abra o Visual Studio Code no diretório `linked_nodes`.
 
 Nele, crie uma pasta chamada `.vscode`.
 Dentro dela, crie um arquivo chamado `tasks.json` e adicione o conteúdo do arquivo [`/code/linked_nodes/.vscode/tasks.json`](/code/linked_nodes/.vscode/tasks.json) deste repositório.
