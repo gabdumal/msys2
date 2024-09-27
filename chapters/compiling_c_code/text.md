@@ -32,14 +32,20 @@ Aqueles voltados para o ambiente CLANG64 são prefixados com `mingw-w64-clang-x8
 A [documentação oficial](https://www.msys2.org/docs/package-management/) do MSYS2 explica em detalhes como funciona o gerenciamento de pacotes.
 Toda a lista de pacotes disponíveis pode ser vista no [repositório do MSYS2](https://packages.msys2.org/).
 
-Vamos instalar o compilador Clang e a ferramenta de compilação Ninja.
+Vamos instalar o compilador Clang, a ferramenta de compilação Ninja, e outros pacotes necessários.
 Para instalá-los, execute o comando abaixo no terminal do MSYS2:
 
 ```bash
-pacman -S mingw-w64-clang-x86_64-clang mingw-w64-clang-x86_64-ninja
+pacman -S mingw-w64-clang-x86_64-ninja mingw-w64-clang-x86_64-gcc mingw-w64-clang-x86_64-gcc-libs
 ```
 
 Confirme a instalação digitando `Y` (ou `S`, se estiver em português) e pressionando `Enter`.
+
+Então, execute o comando abaixo e pressione `Enter` para confirmar a instalação dos pacotes:
+
+```bash
+pacman -S mingw-w64-clang-x86_64-toolchain
+```
 
 ## Compilando o programa
 

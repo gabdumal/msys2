@@ -75,6 +75,19 @@ Execute o comando abaixo no terminal do MSYS2 e confirme:
 pacman -S mingw-w64-clang-x86_64-gdb
 ```
 
+Você pode testar se o GDB foi instalado corretamente executando o comando `gdb --version`.
+
+Agora, precisamos configurar o GDB para imprimir as mensagens de depuração em uma forma legível para humanos.
+Para isso, é necessário instalar um script chamado `pretty-printer` que faz a formatação das mensagens.
+
+Tendo o baixado, é preciso criar um arquivo chamado `.gdbinit` na pasta `/home/[username]`.
+Ese arquivo é responsável por carregar o script toda vez que o GDB é executado.
+
+Esse processo é um pouco mais complicado, então criamos um script que faz isso tudo automaticamente!
+Ele está disponível em [`/config/install_pretty_printer.sh`](/config/install_pretty_printer.sh) deste repositório.
+
+Você pode baixar esse script acessando o link acima e clicando em **Raw**.
+
 ### Compilando pela interface gráfica
 
 Aceite a instalação, e reabra o Visual Studio Code no diretório `linked_nodes`.
