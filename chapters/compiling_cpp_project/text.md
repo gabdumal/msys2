@@ -143,7 +143,7 @@ Selecione a tarefa `Clang: build C++ project (binary tree)` e pressione `Enter`.
 O arquivo de configuração de depuração que fizemos anteriormente tinha duas fases:
 
 - Chama a tarefa de compilação definida em `tasks.json`
-- Executa o comando de depuração, que usa o GDB
+- Executa o comando de depuração, que usa o LLDB
 
 Uma vez que mudamos o nome da tarefa de compilação, precisamos alterar essa chamada no arquivo de configuração de depuração.
 
@@ -154,9 +154,9 @@ Alteramos o nome da tarefa de depuração:
 
 ```json
 // Antes
-"name": "GDB: build and launch C project (all files in root)",
+"name": "LLDB: build and launch C project (all files in root)",
 // Depois
-"name": "GDB: build and launch C++ project (binary tree)",
+"name": "LLDB: build and launch C++ project (binary tree)",
 ```
 
 E o nome da tarefa de compilação que é chamada:
@@ -168,9 +168,10 @@ E o nome da tarefa de compilação que é chamada:
 "preLaunchTask": "Clang: build C++ project (binary tree)",
 ```
 
-Agora clique no botão de depuração e escolha a tarefa `GDB: build and launch C++ project (binary tree)`.
+Agora abra a **Paleta de Comandos** do Visual Studio Code com `Ctrl+Shift+P` e digite `Debug: Select and Start Debugging`.
+Seleciona a tarefa `LLDB: build and launch C++ project (binary tree)` e pressione `Enter`.
 
-![Imagem da porção superior direita da janela do VsCode com a extensão C/C++ habilitada, que mostra ícones de ação sobre o código.](/img/start_debugging_in_vscode.png)
+![Paleta de Comandos do VsCode em que se pesquisa a opção de depurar o código.](/img/selecting_debugging_in_vscode.png)
 
 Seleção da tarefa de depuração:
 
@@ -188,7 +189,7 @@ Disponibilizamos o arquivo `tasks.json` configurado dessa forma em [`/config/cpp
 O nome da tarefa de compilação definida é `Clang: build C++ project (all files in root)`.
 
 Também disponibilizamos uma versão atualizada do arquivo `settings.json` em [`/config/cpp_settings.json`](/config/cpp_settings.json), que inclui a configuração global de depuração.
-O nome da tarefa de depuração definida é `GDB: build and launch C++ project (all files in root)`.
+O nome da tarefa de depuração definida é `LLDB: build and launch C++ project (all files in root)`.
 
 Lembre-se: para editar as configurações do perfil, abra a **Paleta de Comandos** do Visual Studio Code com `Ctrl+Shift+P` e digite `Preferences: Open User Settings (JSON)`.
 

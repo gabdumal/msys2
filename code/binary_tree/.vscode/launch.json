@@ -1,34 +1,15 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "GDB: build and launch C++ project (binary tree)",
-      "type": "cppdbg",
-      "request": "launch",
-      "preLaunchTask": "Clang: build C++ project (binary tree)",
-      "program": "${workspaceFolder}/${workspaceFolderBasename}.exe",
-      "args": [],
-      "stopAtEntry": false,
-      "cwd": "${workspaceFolder}",
-      "environment": [],
-      "externalConsole": true,
-      "MIMode": "gdb",
-      "miDebuggerPath": "C:\\msys64\\clang64\\bin\\gdb.exe",
-      "setupCommands": [
+    "configurations": [
         {
-          "description": "Source the .gdbinit file",
-          "ignoreFailures": true,
-          "text": "source C:/msys64/home/${env:USERNAME}/.gdbinit"
-        },
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "name": "LLDB: build and launch C++ project (binary tree)",
+            "preLaunchTask": "Clang: build C++ project (binary tree)",
+            "program": "${workspaceFolder}/${workspaceFolderBasename}.exe",
+            "request": "launch",
+            "terminal": "console",
+            "type": "lldb"
         }
-      ],
-      "logging": {
-        "engineLogging": true
-      }
-    }
-  ]
+    ],
+    "version": "0.2.0"
 }

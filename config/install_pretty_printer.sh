@@ -31,7 +31,6 @@ except Exception as e:
     print("Error registering pretty printers:", e)
 EOL
 
-
 # Create a GDB script to run the Python script
 cat <<EOL > $HOME/.gdbinit
 set print pretty on

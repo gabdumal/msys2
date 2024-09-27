@@ -68,42 +68,18 @@ Okay, podemos compilar o projeto pelo terminal do Visual Studio Code.
 Mas e se quisermos o fazer por uma interface gráfica?
 E se quisermos depurar o código, ou seja, executá-lo passo a passo e inspecionar variáveis?
 
-Primeiramente, vamos instalar o **GDB**, que é um depurador de código para C e C++.
+Primeiramente, vamos instalar o **LLDB**, que é um depurador de código para C e C++.
 Execute o comando abaixo no terminal do MSYS2 e confirme:
 
 ```bash
-pacman -S mingw-w64-clang-x86_64-gdb
+pacman -S mingw-w64-clang-x86_64-lldb
 ```
 
-Você pode testar se o GDB foi instalado corretamente executando o comando `gdb --version`.
-
-Agora, precisamos configurar o GDB para imprimir as mensagens de depuração em uma forma legível para humanos.
-Para isso, é necessário instalar um script chamado `pretty-printer` que faz a formatação das mensagens.
-
-Tendo o baixado, é preciso criar um arquivo chamado `.gdbinit` na pasta `/home/[username]`.
-Ese arquivo é responsável por carregar o script toda vez que o GDB é executado.
-
-Esse processo é um pouco mais complicado, então criamos um script que faz isso tudo automaticamente!
-Ele está disponível em [`/config/install_pretty_printer.sh`](/config/install_pretty_printer.sh) deste repositório.
-
-Você pode baixar esse script acessando o link acima e clicando no ícone de **Download** no canto superior direito do arquivo.
-
-![Página do script de instalação do pretty-printer no GitHub, com o botão de download destacado.](downloading_install_pretty_printer_script.png)
-
-Mova o script para a pasta `/home/[username]/dev` e execute-o com os comandos abaixo:
+Então, abra o Visual Studio Code e instale a extensão [`CodeLLDB`](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb).
 
 ```bash
-chmod +x ./install_pretty_printer.sh
-sh ./install_pretty_printer.sh
+ext install vadimcn.vscode-lldb
 ```
-
-O comando `chmod +x` torna o script executável, e o comando `sh` o executa.
-
-![Comandos executados no terminal do MSYS2 para tornar o script de instalação do pretty-printer executável e executá-lo.](running_install_pretty_printer_script.png)
-
-Se tudo ocorrer bem, você verá que um arquivo chamado `.gdbinit` foi criado na pasta `/home/[username]`.
-
-![Arquivo .gdbinit criado na pasta /home/[username] após a execução do script de instalação do pretty-printer.](gdbinit_created.png)
 
 ### Compilando pela interface gráfica
 
@@ -111,6 +87,8 @@ Abra o Visual Studio Code no diretório `linked_nodes`.
 
 Nele, crie uma pasta chamada `.vscode`.
 Dentro dela, crie um arquivo chamado `tasks.json` e adicione o conteúdo do arquivo [`/code/linked_nodes/.vscode/tasks.json`](/code/linked_nodes/.vscode/tasks.json) deste repositório.
+
+![Estrutura de pastas do projeto no VsCode, com a pasta .vscode aberta.](/img/vscode_project_structure.png)
 
 O que ele faz é definir uma tarefa chamada `Clang: build C project (all files in root)` que compila o projeto com o Clang, incluindo todos os arquivos de cabeçalho e todos os arquivos de código definidos na raiz do projeto.
 O executável gerado terá o nome da pasta aberta no Visual Studio Code.
@@ -122,15 +100,14 @@ Você pode executar a tarefa `Clang: build C project (all files in root)` pressi
 Agora precisamos definir um arquivo de configuração para a depuração do projeto.
 Crie um arquivo chamado `launch.json` dentro da pasta `.vscode` e adicione o conteúdo do arquivo [`/code/linked_nodes/.vscode/launch.json`](/code/linked_nodes/.vscode/launch.json) deste repositório.
 
-Para rodar o programa, abra o arquivo `main.c` e clique na setinha ao lado do botão de **play** localizado no canto superior direito da janela.
-Seleciona a opção "Debug C/C++ file".
+Para rodar o programa, abra a **Paleta de Comandos** e pesquise por **Debug: Select and Start Debugging**.
 
-![Imagem da porção superior direita da janela do VsCode com a extensão C/C++ habilitada, que mostra ícones de ação sobre o código.](/img/start_debugging_in_vscode.png)
+![Paleta de Comandos do VsCode, em que se está selecionando a opção de depurar o código.](/img/selecting_debugging_in_vscode.png)
 
-O Visual Studio Code compilará pedirá para você selecionar a configuração de depuração.
-Selecione **GDB: build and launch C project (all files in root)**.
+O Visual Studio Code pedirá para você selecionar a configuração de depuração.
+Selecione **LLDB: build and launch C project (all files in root)**.
 
-![Pop-up do VsCode pedindo para selecionar uma configuração de depuração. A selecionada é GDB: build and launch (all files in root).](selecting_debug_configuration_in_vscode.png)
+![Pop-up do VsCode pedindo para selecionar uma configuração de depuração. A selecionada é LLDB: build and launch (all files in root).](selecting_debug_configuration_in_vscode.png)
 
 Essa ação executará a tarefa que definimos no arquivo `tasks.json` e gerará o executável `linked_nodes` na pasta do projeto.
 Em seguida, abrirá o depurador em um terminal separado.

@@ -74,7 +74,7 @@ Substitua o conteúdo do arquivo `settings.json` pelo conteúdo do arquivo [`/co
 
 Nele, adicionamos uma nova configuração de depuração para rodar um programa sem antes compilá-lo (dado que o CMakeTools já fez isso).
 Também definimos algumas configurações específicas para o CMake.
-O nome dessa configuração é `GDB: launch C++ project`.
+O nome dessa configuração é `LLDB: launch C++ project`.
 
 Agora, adicione pontos de depuração no código em `main.cpp`.
 Então, clique no botão com o ícone de `besouro` na barra inferior do VsCode.
