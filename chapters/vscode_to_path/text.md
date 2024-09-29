@@ -21,7 +21,10 @@ Execute o comando abaixo no terminal do MSYS2:
 nano ~/.zshrc
 ```
 
-Dentro do nano, adicione a linha abaixo logo após o caminho do Git, substituindo `[username]` pelo seu nome de usuário do Windows:
+![Arquivo .zshrc aberto no editor de texto Nano](editing_zshrc_nano.png)
+
+Dentro do bloco de notas, adicione a linha abaixo na seção `Windows programs`.
+Substitua `[username]` pelo seu nome de usuário do Windows:
 
 ```bash
 export PATH=$PATH:"/c/Users/[username]/AppData/Local/Programs/Microsoft VS Code/bin"
@@ -29,14 +32,26 @@ export PATH=$PATH:"/c/Users/[username]/AppData/Local/Programs/Microsoft VS Code/
 
 O arquivo deve ficar como este:
 
-![Editor de texto Nano com o conteúdo do arquivo .zshrc, em que adicionamos o executável do VsCode na Path.](adding_vscode_path.png)
+![Arquivo .zshrc editado no Nano, tendo adicionado as linhas acima descritas.](editing_zshrc_nano_edited.png)
 
-Para salvar as alterações, pressione `Ctrl` + `O` e `Enter`.
-Para sair do nano, pressione `Ctrl` + `X`.
+Para salvar o arquivo, pressione `Ctrl` + `O`, e então `Enter`.
+Para sair do editor, pressione `Ctrl` + `X`.
 
-Em vez de fechar o terminal e abrir um novo, você pode recarregar o arquivo `.zshrc` com o comando `source ~/.zshrc`.
+Em vez de fechar o terminal e abrir um novo, você pode recarregar o arquivo `.zshrc` com o seguinte comando:
 
-Agora, você pode abrir o Visual Studio Code diretamente do terminal com o comando `code`.
+```bash
+source ~/.zshrc
+```
+
+Isso fará com que as alterações feitas no arquivo `.zshrc` sejam aplicadas imediatamente.
+
+Agora, você pode abrir o Visual Studio Code diretamente do terminal:
+
+```bash
+code .
+```
+
+Atente-se para o `.` no final do comando, que indica que o Visual Studio Code deve abrir no diretório atual.
 
 ![Comandos executados no terminal do MSYS2 para editar o arquivo de configuração .zshrc, e então abrir o Visual Code Studio.](opening_vscode.png)
 

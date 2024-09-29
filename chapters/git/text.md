@@ -40,11 +40,19 @@ Essa pasta guardará vários arquivos de configuração de programas que você u
 Caso você encontre algum problema, é possível que a solução esteja em um desses arquivos.
 
 Abra o arquivo `C:\msys64\home\[username]\.zshrc` com um editor de texto qualquer.
-Adicione a linha abaixo ao **final** do arquivo:
+Você pode abri-lo com o Bloco de Notas usando o comando:
+
+```bash
+notepad ~/.zshrc
+```
+
+Adicione a linha abaixo ao arquivo:
 
 ```bash
 export PATH=$PATH:"/c/Program Files/Git/cmd":"/c/Program Files/Git/bin"
 ```
+
+![Arquivo .zshrc aberto no Bloco de Notas, tendo adicionado a linha referende ao Git.](opening_zshrc_notepad.png)
 
 Aqui tem um detalhe: o MSYS2, assim como sistemas Unix-like, usa barras normais (`/`) para separar os diretórios.
 No Windows, usamos barras invertidas (`\`), como em `C:\Program Files\Git\cmd`.
